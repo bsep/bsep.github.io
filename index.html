@@ -4,26 +4,25 @@
   <meta charset="UTF-8">
   <title>BSEP</title>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-6">
+        <h2>Download Server</h2>
+        <h3>Latest version is <span id="version-label" class="label label-success"></span></h3>
+        <h3>Download</h3>
+        <ul id="dl-list" class="list-unstyled"></ul>
+      </div>
+      <div class="col-md-6">
         <h2>Packs</h2>
-        <ul id="pack-list">
-          <li>Google: <input type="text" value="google.zip"><br>
-            <small>Includes Encrypted Search and Lucky Search</small></li>
-        </ul>
+        <ul id="pack-list" class="list-unstyled"></ul>
       </div>
     </div>
   </div>
-  <script type="text/javascript">
-    var packs = document.querySelectorAll('#pack-list input');
-    function select () { this.select(); }
-    for (var i = 0; i < packs.length; i++) {
-      packs[i].value = location.protocol + '//' + location.hostname + '/packs/' + packs[i].getAttribute('value');
-      packs[i].onclick = select;
-    }
-  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lscache/1.1.0/lscache.min.js" integrity="sha256-ji1pzTcSziNvyISra2CjkkJM5XsmYYq8lnWmqNpR5RA=" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/index.js"></script>
 </body>
 </html>
