@@ -5,10 +5,12 @@ var versionUrl = 'https://api.github.com/repos/bsep/server/releases/latest';
 var packList = $('#pack-list');
 
 function insertPack (item) {
-  $(`<li class="well"><h3>${item.name}</h3><p>${item.desc}</p><input type="text" readonly></li>`)
+  var url = location.protocol + '//' + location.hostname + '/packs/' + item.url;
+  $(`<li class="well"><h3>${item.name}</h3><p>${item.desc}</p><input class="form-control" type="text" readonly></li>`)
     .appendTo(packList)
     .children('input')
-    .val(() => location.protocol + '//' + location.hostname + '/packs/' + item.url)
+    .css('width', '' + (url.length * 9) + 'px')
+    .val(url)
     .click(select);
 }
 
@@ -40,6 +42,8 @@ load('version', versionUrl, function (data) {
     if (asset.name.includes('amd64')) releaseName += ' (64-bit)';
     if (asset.name.includes('checksums')) releaseName = 'Checksums';
 
-    verList.append(`<li><a class="btn btn-default" href="${asset.browser_download_url}">${releaseName}</a></li>`)
+    verList.append(`<li><a class="btn btn-lg btn-default btn-block" href="${asset.browser_download_url}">
+      <span class="glyphicon glyphicon-download-alt"></span>
+      ${releaseName}</a></li>`)
   })
 });
